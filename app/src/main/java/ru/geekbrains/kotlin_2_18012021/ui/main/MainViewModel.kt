@@ -1,0 +1,17 @@
+package ru.geekbrains.kotlin_2_18012021.ui.main
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import ru.geekbrains.kotlin_2_18012021.data.model.Repository
+
+class MainViewModel : ViewModel() {
+    private val viewStateLiveData: MutableLiveData<MainViewState> =
+        MutableLiveData()
+
+    init {
+        viewStateLiveData.value = MainViewState(Repository.getNotes())
+    }
+
+    fun viewState(): LiveData<MainViewState> = viewStateLiveData
+}
