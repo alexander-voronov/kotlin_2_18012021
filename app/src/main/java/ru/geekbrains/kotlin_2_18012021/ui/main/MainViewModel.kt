@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 import ru.geekbrains.kotlin_2_18012021.data.model.Repository
 
 class MainViewModel : ViewModel() {
-    private val viewStateLiveData: MutableLiveData<MainViewState> =
-        MutableLiveData()
+
+    private val viewStateLiveData: MutableLiveData<MainViewState> = MutableLiveData()
 
     init {
-        viewStateLiveData.value = MainViewState(Repository.getNotes())
+        Repository.getNotes().observeForever {
+            viewStateLiveData.value = viewStateLiveData.value?.copy(notes = it) ?: MainViewState(it)
+        }
+
     }
 
     fun viewState(): LiveData<MainViewState> = viewStateLiveData

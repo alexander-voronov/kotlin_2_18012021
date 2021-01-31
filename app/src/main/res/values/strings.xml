@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">kotlin_2_18012021</string>
+    <string name="new_note_title">New note</string>
 </resources>
