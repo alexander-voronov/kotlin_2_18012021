@@ -1,5 +1,7 @@
 package ru.geekbrains.kotlin_2_18012021.ui.main
 
 import ru.geekbrains.kotlin_2_18012021.data.model.Note
+import ru.geekbrains.kotlin_2_18012021.ui.base.BaseViewState
 
-data class MainViewState (val notes: List<Note>)
+class MainViewState(notes: List<Note>? = null, error: Throwable? = null) :
+    BaseViewState<List<Note>?>(notes, error)
